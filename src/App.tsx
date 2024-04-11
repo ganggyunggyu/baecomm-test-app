@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import { Route, Routes } from 'react-router-dom';
+import Main from './pages/Main';
+import styled from 'styled-components';
+import Detail from './pages/Detail';
+import Header from './components/Main/Header';
+import Search from './pages/Search';
+import { RoundedButton } from './components/Atom/AtomComponents';
+import { scrollToTop } from './util/scrollToTop';
 
+export const AppWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper>
+      <Header />
+      <Routes>
+        <Route path='/' element={<Main />} />
+        <Route path='/search/:searchValue' element={<Search />} />
+        <Route path='/detail/:productId' element={<Detail />} />
+      </Routes>
+      <RoundedButton onClick={scrollToTop}>TOP</RoundedButton>
+    </AppWrapper>
   );
 }
 

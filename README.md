@@ -2,7 +2,7 @@
 
 ## 개요
 
-링크 : [http~](https://baecomm-test-app.vercel.app/)
+링크 : (https://baecomm-test-app.vercel.app/)
 
 ## 파일 구조
 

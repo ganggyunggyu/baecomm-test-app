@@ -18,3 +18,8 @@ export const totalState = atom<number>({
   key: 'totalState',
   default: 0,
 });
+
+export const searchValueState = atom<string>({
+  key: 'searchValueState',
+  default: '',
+});

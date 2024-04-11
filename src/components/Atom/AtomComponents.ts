@@ -17,6 +17,7 @@ export const RoundedButton = styled.button`
   bottom: 10px;
   right: 10px;
   transition: all 0.5s;
+  opacity: 0.9;
   &:hover {
     background-color: #ddd;
   }

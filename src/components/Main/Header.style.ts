@@ -18,7 +18,6 @@ export const Logo = styled.div`
   }
 `;
 export const HeaderWrapper = styled.header`
-  margin-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;

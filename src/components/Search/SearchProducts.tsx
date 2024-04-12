@@ -54,5 +54,3 @@ export default function SearchProducts() {
     </React.Fragment>
   );
 }
-
-export {};

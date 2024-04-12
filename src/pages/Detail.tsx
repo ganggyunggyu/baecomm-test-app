@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import { productsState, searchProductsState, searchValueState } from '../shared/atom';
 import { useRecoilValue } from 'recoil';
 import { scrollToTop } from '../util/scrollToTop';
-import { T } from '../shared';
 import * as S from './Detail.style';
 import SearchProducts from '../components/Search/SearchProducts';
 import Products from '../components/Main/Products';
@@ -31,7 +30,7 @@ const Detail = () => {
 
   React.useEffect(() => {
     scrollToTop();
-  }, []);
+  }, [productId]);
 
   const product = getProduct();
 

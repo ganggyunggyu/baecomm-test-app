@@ -30,7 +30,9 @@ export default function SearchForm() {
         <S.SearchButton type='button' onClick={getSearchProducts}>
           검색
         </S.SearchButton>
-        <S.InputClearButton onClick={clearInput}>❌</S.InputClearButton>
+        <S.InputClearButton type='button' onClick={clearInput}>
+          ❌
+        </S.InputClearButton>
       </S.SearchInputWrapper>
     </S.SearchFormWrapper>
   );

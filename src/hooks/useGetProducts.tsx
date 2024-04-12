@@ -23,7 +23,7 @@ const useGetProducts = () => {
       setTotal(total);
       setSkip((prev) => prev + 10);
       sessionStorage.setItem('y', window.scrollY.toString());
-      scrollToBottom();
+      // scrollToBottom();
     } catch (error) {
       console.error(error);
     }

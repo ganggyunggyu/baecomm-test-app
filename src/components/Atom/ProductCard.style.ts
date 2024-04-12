@@ -8,6 +8,10 @@ export const ProductCard = styled.div`
   transition: all 0.5s;
   cursor: pointer;
   padding: 10px;
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   &:hover {
     color: ${COLOR.HOVER_COLOR};
     background-color: #eee;
@@ -29,6 +33,7 @@ export const ProductTitle = styled.div`
   display: flex;
   font-weight: bold;
   gap: 10px;
+  margin-bottom: 3px;
   overflow-x: scroll;
   font-size: ${FONT_SIZE.MD};
 `;

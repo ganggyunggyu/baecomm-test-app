@@ -9,4 +9,3 @@ export const FONT_SIZE = {
   LG: '16px',
   XXL: '20px',
 };
-export {};

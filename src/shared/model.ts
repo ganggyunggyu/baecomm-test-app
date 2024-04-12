@@ -11,5 +11,3 @@ export type Product = {
   thumbnail: string;
   title: string;
 };
-
-export {};

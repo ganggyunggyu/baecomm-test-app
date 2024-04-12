@@ -8,6 +8,10 @@ export default function SearchForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+  const clearInput = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    setSearchValue('');
+  };
 
   return (
     <S.SearchFormWrapper onSubmit={handleSubmit}>
@@ -26,6 +30,7 @@ export default function SearchForm() {
         <S.SearchButton type='button' onClick={getSearchProducts}>
           검색
         </S.SearchButton>
+        <S.InputClearButton onClick={clearInput}>❌</S.InputClearButton>
       </S.SearchInputWrapper>
     </S.SearchFormWrapper>
   );

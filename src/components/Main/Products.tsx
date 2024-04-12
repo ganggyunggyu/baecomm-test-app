@@ -14,10 +14,10 @@ export default function Products() {
 
   return (
     <React.Fragment>
-      상품
+      상품 목록
       <S.ProductsWrapper>
-        {products.map((product) => {
-          return <Product product={product} key={product.id + product.title} />;
+        {products.map((product, index) => {
+          return <Product product={product} key={index} />;
         })}
       </S.ProductsWrapper>
       {products.length !== total && <S.AddButton onClick={getProducts}>더 보기</S.AddButton>}
@@ -27,5 +27,3 @@ export default function Products() {
     </React.Fragment>
   );
 }
-
-export {};

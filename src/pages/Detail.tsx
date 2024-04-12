@@ -7,6 +7,7 @@ import { T } from '../shared';
 import * as S from './Detail.style';
 import SearchProducts from '../components/Search/SearchProducts';
 import Products from '../components/Main/Products';
+import useGetProduct from '../hooks/useGetProduct';
 
 const Detail = () => {
   const { productId } = useParams();
@@ -15,22 +16,7 @@ const Detail = () => {
   const searchProducts = useRecoilValue(searchProductsState);
   const searchValue = useRecoilValue(searchValueState);
   const totalProducts = [...products, ...searchProducts];
-
-  const getProductFetch = async () => {
-    const API_URL = `https://dummyjson.com/products/${productId}`;
-    try {
-      const response = await fetch(`${API_URL}`);
-      if (!response.ok) {
-        throw new Error('response Error');
-      }
-      const data = await response.json();
-      const product: T.Product = data;
-      console.log(product);
-      return product;
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const { getProductFetch, fetchProduct } = useGetProduct();
   const getProduct = () => {
     scrollToTop();
     if (productId) {
@@ -38,9 +24,8 @@ const Detail = () => {
         return product.id === +productId;
       });
       if (product) return product;
-      // const fetchProduct = await getProductFetch();
-      // console.log(fetchProduct);
-      // if (fetchProduct) return fetchProduct;
+      getProductFetch(productId);
+      return null;
     }
   };
 
@@ -57,13 +42,34 @@ const Detail = () => {
         <S.ProductTitle>{product.title}</S.ProductTitle>
         <S.ProductCategory>{product.category}</S.ProductCategory>
         <S.ProductDescription>{product.description}</S.ProductDescription>
-        <S.ProductPrice>${product.price}</S.ProductPrice>
+        <S.ProductPrice>🤑 ${product.price}</S.ProductPrice>
         <S.ProductDiscount>Discount: {product.discountPercentage}%</S.ProductDiscount>
         <S.ProductRating>Rating: {product.rating}</S.ProductRating>
         <S.ProductStock>Stock: {product.stock}</S.ProductStock>
-        {product.images.map((img) => {
-          return <S.ProductImage src={img} key={img} />;
+        {product.images.map((img, index) => {
+          return <S.ProductImage src={img} key={index} />;
         })}
+
+        {searchValue && <SearchProducts />}
+        {!searchValue && <Products />}
+      </S.DetailWrapper>
+    );
+  }
+  if (fetchProduct) {
+    return (
+      <S.DetailWrapper>
+        <S.ProductImage src={fetchProduct.thumbnail} alt='productimage' />
+        <S.ProductTitle>{fetchProduct.title}</S.ProductTitle>
+        <S.ProductCategory>{fetchProduct.category}</S.ProductCategory>
+        <S.ProductDescription>{fetchProduct.description}</S.ProductDescription>
+        <S.ProductPrice>🤑 ${fetchProduct.price}</S.ProductPrice>
+        <S.ProductDiscount>Discount: {fetchProduct.discountPercentage}%</S.ProductDiscount>
+        <S.ProductRating>Rating: {fetchProduct.rating}</S.ProductRating>
+        <S.ProductStock>Stock: {fetchProduct.stock}</S.ProductStock>
+        {fetchProduct.images.map((img, index) => {
+          return <S.ProductImage src={img} key={index} />;
+        })}
+
         {searchValue && <SearchProducts />}
         {!searchValue && <Products />}
       </S.DetailWrapper>

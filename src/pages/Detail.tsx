@@ -28,10 +28,6 @@ const Detail = () => {
     }
   };
 
-  React.useEffect(() => {
-    scrollToTop();
-  }, [productId]);
-
   const product = getProduct();
 
   if (product) {
@@ -60,6 +56,7 @@ const Detail = () => {
         <S.ProductImage src={fetchProduct.thumbnail} alt='productimage' />
         <S.ProductTitle>{fetchProduct.title}</S.ProductTitle>
         <S.ProductCategory>{fetchProduct.category}</S.ProductCategory>
+        상세 설명
         <S.ProductDescription>{fetchProduct.description}</S.ProductDescription>
         <S.ProductPrice>🤑 ${fetchProduct.price}</S.ProductPrice>
         <S.ProductDiscount>Discount: {fetchProduct.discountPercentage}%</S.ProductDiscount>
@@ -68,7 +65,6 @@ const Detail = () => {
         {fetchProduct.images.map((img, index) => {
           return <S.ProductImage src={img} key={index} />;
         })}
-
         {searchValue && <SearchProducts />}
         {!searchValue && <Products />}
       </S.DetailWrapper>

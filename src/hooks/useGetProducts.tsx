@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSetRecoilState } from 'recoil';
 import { productsState, totalState } from '../shared/atom';
-import { scrollToBottom } from '../util/scrollToBottom';
 
 const useGetProducts = () => {
   const setProducts = useSetRecoilState(productsState);
@@ -23,7 +22,6 @@ const useGetProducts = () => {
       setTotal(total);
       setSkip((prev) => prev + 10);
       sessionStorage.setItem('y', window.scrollY.toString());
-      // scrollToBottom();
     } catch (error) {
       console.error(error);
     }

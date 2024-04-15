@@ -48,4 +48,3 @@ export const ProductPrice = styled.p`
   margin-top: 10px;
 `;
 
-export {};

@@ -4,6 +4,8 @@
 
 링크 : (https://baecomm-test-app.vercel.app/)
 
+배포는 Vercel을 이용하였습니다.
+
 ## 파일 구조
 
 ## 필수 기능
